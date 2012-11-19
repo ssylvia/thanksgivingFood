@@ -1,4 +1,4 @@
-       html,body {
+      html,body {
       height:100%;
       width:100%;
       padding:0;
@@ -23,6 +23,15 @@
 	  a:hover{
 	  text-decoration:underline;
 	  }
+
+      img{
+      outline:none;
+      border:none
+      }
+
+      area{
+      cursor:pointer;
+      }
 
       #header {
       height:115px;

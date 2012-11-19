@@ -27,9 +27,7 @@ var initApp = function(){
         lyr.setOpacity(0);
         lyr.hide();
     });
-    dojo.forEach(getLayerByName(foods.turkey.layerName,true,false),function(lyr,i){
-        fadeLayerIn(map,lyr);
-    });
+    startFade(getLayerByName(map,"turkey"));
 };
 
 var changeFood = function(food){
@@ -84,7 +82,7 @@ var fadeLayerIn = function(mapVariable,layer){
         layer.setOpacity(layer.opacity + 0.1);
         setTimeout(function() {
             fadeLayerIn(mapVariable,layer);
-        }, 10);
+        }, 20);
     }
     else{
         layer.setOpacity(1);
@@ -97,7 +95,7 @@ var fadeLayerOut = function(mapVariable,layer){
         layer.setOpacity(layer.opacity - 0.1);
         setTimeout(function() {
             fadeLayerOut(mapVariable,layer);
-        }, 10);
+        }, 20);
     }
     else{
         layer.setOpacity(0);
