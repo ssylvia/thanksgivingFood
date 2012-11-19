@@ -32,6 +32,7 @@ var initApp = function(){
 
 var changeFood = function(food){
     $("#description").html(foods[food].description);
+    $("#foodTitleText").html(foods[food].linkText);
     startFade(getLayerByName(map,food));
 };
     

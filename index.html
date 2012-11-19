@@ -56,8 +56,17 @@
 
     <style type="text/css">
 	  .esriSimpleSlider{
-	    background-color:#dadada;
+	    background-color:#444;
+        color:#fff;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -o-border-radius: 0px;
+        border-radius: 0px;
+        opacity:0.85;
 	  }
+      .esriSimpleSliderVertical .esriSimpleSliderIncrementButton {
+        border-bottom: 1px dashed #dadada;
+      }
 	</style>
 
     <!--Social Media Links-->
@@ -92,7 +101,7 @@
               <div id="subtitle"></div>
             </div>
             <div id="logoArea">
-              <div id="social"><a id="smLink" href="http://storymaps.esri.com" target="_blank">A story map </a><span  class='st_facebook' ></span><span  class='st_twitter' st_via='EsriStoryMaps'></span></div>
+                <div id="social"><span  class='st_facebook' ></span><span  class='st_twitter' st_via='EsriStoryMaps'></span> <a id="smLink" href="http://storymaps.esri.com" target="_blank">A story map</a></div>
               <div id="logo"><a id="logoLink" href="http://www.esri.com" target="_blank"><img id="logoImg" src="images/esriGlobeLogow.png" alt="Esri - Home"></a></div>
             </div>
         <div id="header_flourish"></div>
@@ -104,6 +113,7 @@
               <div id="leftPane" dojotype="dijit.layout.BorderContainer" gutters="false" region="left">
                 <div id="foodSelectorPane" dojotype="dijit.layout.ContentPane" region="top">
                     <img id="foodPlate" src="images/TDinner.png" alt="Thanksgiving Dinner" usemap="#foodImgMap">
+                    <div id="foodTitle"><span id="foodTitleText">Turkey</span></div>
                 </div><!--foodSelectorPane-->
                 <div id="description" dojotype="dijit.layout.ContentPane" region="center">
                 </div><!--description-->
