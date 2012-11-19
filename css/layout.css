@@ -1,4 +1,4 @@
-﻿ 	  html,body {
+       html,body {
       height:100%;
       width:100%;
       padding:0;
@@ -19,7 +19,7 @@
 	  font-weight:bold;
 	  text-decoration:none;
       }
-	  
+
 	  a:hover{
 	  text-decoration:underline;
 	  }
@@ -30,7 +30,7 @@
 	  color:#fff;
       margin:0;
       }
-	  
+
 	  #headerText{
 	  padding-top:20px;
       padding-left:25px;
@@ -43,8 +43,8 @@
       font-size:20px;
 	  font-weight:bold;
       text-align:left;
-      white-space: nowrap;  
-      overflow: hidden;  
+      white-space: nowrap;
+      overflow: hidden;
       text-overflow: ellipsis;
       -o-text-overflow:ellipsis;
       }
@@ -54,46 +54,76 @@
 	  margin-top:10px;
       overflow: hidden;
       }
-	  
-	  #logoArea{
+
+      #logoArea{
 	  float:right;
+      width:125px;
 	  padding-top:25px;
 	  padding-right:25px;
-	  text-align:right;
+      overflow: hidden;
 	  }
-	  
-	  #social{
-	  margin-bottom:20px;
-	  }
-	  
-	  #msLink{
-	  color:#fff;
-	  font-family:Arial, Helvetica, sans-serif;
-	  font-weight:bold;
-	  font-size:13px;
-	  outline:none;
-	  }
-	  
+
+      #social,#logo{
+      float:right;
+      }
+
+      #social{
+      padding-bottom:20px;
+      }
+
+      #smLink{
+      color:#fff;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:bold;
+      font-size:12px;
+      text-decoration:none;
+      outline:none;
+      }
+
+      #smLink:hover{
+      text-decoration:underline;
+      }
+
 	  #logo{
 	  border:none;
 	  outline:none;
 	  }
-	  
+
 	  #logoImg{
 	  border:none;
 	  outline:none;
 	  }
 
+      #leftPane {
+      width:320px;
+      height:100%;
+      font-size:1.1em;
+      }
+
+      #foodSelectorPane{
+      width:100%;
+      height:450px;
+      }
+
+      #foodPlate{
+      width:320px;
+      }
+
+      #description{
+      padding:25px;
+      overflow:auto;
+      }
+
       #map {
       margin:0;
       }
-	  
+
 	  #swipeImg{
 	  display:none;
 	  position:absolute;
 	  z-index:2;
 	  }
-	  
+
 	  .moveable {
       position:absolute;
       border-left:1px solid #848484;
@@ -106,7 +136,7 @@
       z-index: 30;
       cursor: col-resize;
 	  }
-	  
+
 	  .moveable:hover {
 	  background-color:#999;
 	  }
@@ -119,21 +149,22 @@
       margin:0;
       padding:10px 15px 5px;
       }
-	  
+
       .map .bingLogo-lg {
       left:18px !important;
       }
-	  
-	  #legendCon{
+
+      #legendCon{
 	  position:absolute;
  	  width:300px !important;
-	  margin-left:100px;
+      right:20px;
+      border:2px solid #848484;
   	  z-index:100;
 	  }
 
 	  #legendDiv{
 	  display:none;
-	  background:#848484;
+	  background:#dadada;
 	  max-height:450px;
 	  overflow:auto;
 	  padding:10px;
@@ -144,14 +175,14 @@
 	  position:relative;
 	  background:#848484;
 	  margin-top:-1px;
-	  width:125px;
+	  width:100%;
 	  .height:28px;
 	  cursor:pointer;
 	  z-index:100;
 	  color:#fff;
 	  font-family:Arial, Helvetica, sans-serif;
 	  }
-	  
+
 	  #legTogText{
 	  position:relative;
 	  margin:auto;
@@ -161,11 +192,11 @@
 	  color:#fff;
 	  font-family:Arial, Helvetica, sans-serif;
 	  }
-	  
+
 	  g,v {
 	  cursor:pointer;
 	  }
-	
+
 	  #loadingCon{
 	  position:absolute;
 	  z-index:99;
@@ -173,13 +204,13 @@
       top:40%;
 	  text-align:center;
 	  }
-		
+
 	  #loadingDialog{
 	  margin:auto;
 	  background-color:#dadada;
-	  width:300px	
+	  width:300px
 	  }
-		
+
 	  #loadingHeader{
 	  background-color:#444;
 	  color:#fff;
@@ -187,16 +218,16 @@
 	  padding-bottom:10px;
 	  width:300px;
 	  }
-		
+
 	  #loading{
 	  padding-top:10px;
 	  }
-		
+
 	  #loadingImg{
 	  margin-top:5px;
 	  padding-bottom:10px;
 	  }
-	  
+
 	  .esriViewPopup .gallery{
 	  background-color:#dadada;
 	  }

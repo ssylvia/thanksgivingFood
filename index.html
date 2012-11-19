@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
     <title>Storytelling - Basic</title>
-    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.0/js/dojo/dijit/themes/tundra/tundra.css">
-    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.0/js/esri/dijit/css/Popup.css">    
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/css/esri.css" />
     <link rel="stylesheet" type="text/css" href="css/layout.css">
     <link rel="stylesheet" type="text/css" href="css/popup.css">
 
@@ -18,30 +18,31 @@
 		  ]
 		};
     </script>
-    <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.0compact"></script>
+    <script type="text/javascript" src="https://servicesbeta.esri.com/jsapi/arcgis/?v=3.2"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="javascript/map.js"></script>
     <script type="text/javascript" src="javascript/layout.js"></script>
     <script type="text/javascript">
-      
+
     var configOptions;
-    
+
     function init(){
-    
+
       configOptions = {
         //The ID for the map from ArcGIS.com
-        webmap : "9aae75bf5d2c4ce7ad8341e3c291f724",
+        webmap : "61504110b4c643a488bbcfffa46f250a",
 		//The id for the web mapping applciation item that contains configuration info - in most
-        //cases this will be null. 
+        //cases this will be null.
         appid:"",
         //Enter a title, if no title is specified, the webmap's title is used.
-        title : "",
+        title : "Where Did Your Thanksgiving Dinner Come From?",
         //Enter a subtitle, if not specified the ArcGIS.com web map's summary is used
-        subtitle : "",
+        subtitle : "From the farm to your feast, take a look at where these four staples of the holiday meal may have originated.",
         //If the webmap uses Bing Maps data, you will need to provided your Bing Maps Key
         bingmapskey : "",
         //specify a proxy url if needed
         proxyurl:"",
-        //specify the url to a geometry service 
+        //specify the url to a geometry service
         geometryserviceurl:"http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
         //Modify this to point to your sharing service URL if you are using the portal
         sharingurl :"http://arcgis.com/sharing/content/items"
@@ -49,17 +50,37 @@
         initMap();
     }
 
-    //show map on load 
+    //show map on load
     dojo.addOnLoad(init);
     </script>
-    
+
     <style type="text/css">
 	  .esriSimpleSlider{
 	    background-color:#dadada;
 	  }
 	</style>
-  </head>	
-   
+
+    <!--Social Media Links-->
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({publisher: "77225c91-2742-42f7-b1b4-bddda99a9bde"});
+    </script>
+    <!--END Social Media Links-->
+    <!--Google Analytics Start-->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-26529417-1']);
+        _gaq.push(['_trackPageview']);
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!--Google Analytics End-->
+
+  </head>
+
       <body class="tundra">
         <div id="mainWindow" dojotype="dijit.layout.BorderContainer" design="headline"
         gutters="false" style="width:100%; height:100%;">
@@ -71,22 +92,35 @@
               <div id="subtitle"></div>
             </div>
             <div id="logoArea">
+              <div id="social"><a id="smLink" href="http://storymaps.esri.com" target="_blank">A story map </a><span  class='st_facebook' ></span><span  class='st_twitter' st_via='EsriStoryMaps'></span></div>
+              <div id="logo"><a id="logoLink" href="http://www.esri.com" target="_blank"><img id="logoImg" src="images/esriGlobeLogow.png" alt="Esri - Home"></a></div>
             </div>
         <div id="header_flourish"></div>
-    
+
           </div>
 
-          <!-- Map Section -->
-          <div id="map" dojotype="dijit.layout.ContentPane" region="center">
-            <div id="legendCon">
-	         	<div id="legendDiv"></div>
-              	<div id="legendToggle"><p id="legTogText">MAP LEGEND ▼</p></div>
-            </div>
-            <img id="swipeImg" src="images/swipeStart.png" alt="">
-          </div>
+          <div id="content" dojotype="dijit.layout.BorderContainer" gutters="false" region="center">
+
+              <div id="leftPane" dojotype="dijit.layout.BorderContainer" gutters="false" region="left">
+                <div id="foodSelectorPane" dojotype="dijit.layout.ContentPane" region="top">
+                    <img id="foodPlate" src="images/TDinner.png" alt="Thanksgiving Dinner" usemap="#foodImgMap">
+                </div><!--foodSelectorPane-->
+                <div id="description" dojotype="dijit.layout.ContentPane" region="center">
+                </div><!--description-->
+              </div><!--leftPane-->
+
+              <!-- Map Section -->
+              <div id="map" dojotype="dijit.layout.ContentPane" region="center">
+                <div id="legendCon">
+                      <div id="legendToggle"><p id="legTogText">MAP LEGEND ▼</p></div>
+                 	<div id="legendDiv"></div>
+                </div>
+              </div><!--map-->
+
+          </div><!--content-->
 
         </div>
-        
+
         <!--Loading Panel-->
         <div id="loadingCon">
     		<div id="loadingDialog">
@@ -95,8 +129,15 @@
        			 <img id="loadingImg" alt="" src="images/progressBar.gif">
     		    </div>
    		    </div>
- 		  </div	
-        
-      ></body>
+ 		  </div>
+
+        <map id="foodImgMap" name="foodImgMap">
+            <area shape="poly" alt="Turkey" title="" coords="106,47,120,40,131,40,149,36,167,35,179,38,187,43,190,47,191,52,198,62,203,73,203,83,199,89,197,92,191,97,189,100,195,107,197,112,188,114,183,115,179,116,181,121,179,125,174,127,170,128,166,132,158,133,151,140,150,141,145,141,144,147,135,149,126,152,121,154,116,156,111,159,105,160,102,155,102,147,96,147,94,152,89,150,84,147,78,142,78,127,80,119,77,120,69,120,68,114,71,97,78,78,86,63" onclick="changeFood('turkey')" />
+            <area shape="poly" alt="Cranberry Sauce" title="" coords="217,88,225,93,226,90,226,86,230,85,232,90,234,90,242,101,244,103,246,113,243,116,242,130,244,134,243,139,230,150,228,144,221,150,213,154,209,157,203,157,199,152,193,151,189,147,191,142,188,135,186,132,184,128,183,123,182,121,180,116,198,112,198,109,190,99,195,95,201,94,203,95,205,93,210,95,213,83" onclick="changeFood('cranberries')" />
+            <area shape="poly" alt="Greenbeans" title="" coords="228,170,259,183,263,191,262,196,267,200,263,205,258,204,256,205,252,208,248,208,251,211,244,215,265,222,266,225,251,229,248,230,252,239,242,237,245,243,242,246,238,246,225,236,219,242,226,251,213,251,210,252,214,259,208,266,192,245,158,199,163,199,160,194,150,188,140,175,143,172,135,158,141,156,145,158,146,157,148,153,145,145,146,143,149,141,164,152,170,146,173,147,172,143,176,140,180,142,189,148,199,156,213,162" onclick="changeFood('greenbeans')" />
+            <area shape="poly" alt="Sweet Potatoes" title="" coords="44,182,50,184,49,179,53,177,48,173,49,170,55,172,60,165,66,155,74,157,78,153,78,153,82,153,86,150,89,150,95,152,97,147,101,147,101,155,105,159,107,160,109,166,117,168,119,162,124,160,127,164,131,165,137,170,136,173,140,174,145,182,143,183,142,184,140,185,146,188,152,190,157,195,158,199,156,204,152,206,150,211,151,215,155,216,160,228,156,229,157,234,145,236,142,234,138,239,133,239,130,239,129,244,127,247,117,249,113,247,109,240,101,246,101,249,95,249,86,252,81,249,75,246,74,240,69,231,75,232,70,227,66,225,66,222,62,221,59,216,56,214,53,209,54,207,47,206,40,200,40,194,42,191,39,186,40,184,43,183" onclick="changeFood('sweetPotatoes')" />
+        </map>
+
+      </body>
 
   </html>
