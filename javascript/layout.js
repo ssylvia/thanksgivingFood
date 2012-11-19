@@ -2,22 +2,26 @@ var foods = {
     "turkey" : {
         "layerName" : "turkey",
         "linkText" : "Turkey",
-        "description" : "Turkey farmers want to be where there the corn and soybeans are. Geographically, then, big turkey producers are located near to processing plants and the cheap foods that will feed their livestock (Which explains the dots few and far between in regions like Utah and Texas).<br><br>There is also a large and vibrant industry of small scale production, as the smattering of dots on the map indicate. In fact, it’s not unusual to have turkey farms with a relatively small number of hogs and small-scale beef production too."
+        "description" : "Turkey farmers want to be where there the corn and soybeans are. Geographically, then, big turkey producers are located near to processing plants and the cheap foods that will feed their livestock (Which explains the dots few and far between in regions like Utah and Texas).<br><br>There is also a large and vibrant industry of small scale production, as the smattering of dots on the map indicate. In fact, it’s not unusual to have turkey farms with a relatively small number of hogs and small-scale beef production too.",
+        "legend" : "images/legends/turkey.png"
     },
     "sweetPotatoes" : {
         "layerName" : "potatoes",
         "linkText" : "Sweet Potatoes",
-        "description" : "Like cranberries, sweet potatoes are picky and require specific conditions to yield the best crops. They need a long growing season, heat in the summer and a ton of water. For this reason sweet potatoes have the best yield in the south. They were first grown in South America, though they are often confused with the white starchy yam originating from West Africa and Asia—especially during the holidays."
+        "description" : "Like cranberries, sweet potatoes are picky and require specific conditions to yield the best crops. They need a long growing season, heat in the summer and a ton of water. For this reason sweet potatoes have the best yield in the south. They were first grown in South America, though they are often confused with the white starchy yam originating from West Africa and Asia—especially during the holidays.",
+        "legend" : "images/legends/sweetPotatoes.png"
     },
     "cranberries" : {
         "layerName" : "cranberries",
         "linkText" : "Cranberries",
-        "description" : "Cranberries require very specific growing conditions. Because they are traditionally grown in natural wetlands, they need a lot of water. They also require a period of dormancy during the winter months which limits the regions in which they are grown to the northern parts of America."
+        "description" : "Cranberries require very specific growing conditions. Because they are traditionally grown in natural wetlands, they need a lot of water. They also require a period of dormancy during the winter months which limits the regions in which they are grown to the northern parts of America.",
+        "legend" : "images/legends/cranberries.png"
     },
     "greenbeans" : {
         "layerName" : "greenbeans",
         "linkText" : "Green Beans",
-        "description" : "Though the map indicates that green bean farms are evenly scattered throughout a large part of the country, in the regions with the highest production—the south and the midwest for example—most of the production is driven by the location of the processing industries."
+        "description" : "Though the map indicates that green bean farms are evenly scattered throughout a large part of the country, in the regions with the highest production—the south and the midwest for example—most of the production is driven by the location of the processing industries.",
+        "legend" : "images/legends/greenbeans.png"
     }
 };
 
@@ -34,11 +38,12 @@ var changeFood = function(food){
     $("#description").html(foods[food].description);
     $("#foodTitleText").html(foods[food].linkText);
     startFade(getLayerByName(map,food));
+    $("#legendImg").attr("src",foods[food].legend);
 };
-    
+
 var getLayerByName = function(mapVariable,layerName,searchMainLayers,searchGraphicsLayers){
     var layers = [];
-        
+
     if(searchMainLayers !== false){
         dojo.forEach(mapVariable.layerIds,function(lyr){
             if(lyr.toLowerCase().search(layerName.toLowerCase()) !== -1){
@@ -53,10 +58,10 @@ var getLayerByName = function(mapVariable,layerName,searchMainLayers,searchGraph
             }
         });
     }
-        
+
     return layers;
 };
-    
+
 var startFade = function(layers){
     dojo.forEach(getLayerByName(map,"thanksgiving",true,false),function(lyr){
         lyr.fading = false;
@@ -74,7 +79,7 @@ var startFade = function(layers){
         }
     });
 };
-    
+
 var fadeLayerIn = function(mapVariable,layer){
     if(!layer.visible){
         layer.show();
@@ -90,7 +95,7 @@ var fadeLayerIn = function(mapVariable,layer){
         layer.fading = false;
     }
 };
-    
+
 var fadeLayerOut = function(mapVariable,layer){
     if(layer.opacity > 0 && layer.fading === true){
         layer.setOpacity(layer.opacity - 0.1);
