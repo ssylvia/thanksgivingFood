@@ -2,13 +2,13 @@ var foods = {
     "turkey" : {
         "layerName" : "turkey",
         "linkText" : "Turkey",
-        "description" : "Turkey farmers want to be where there the corn and soybeans are. Geographically, then, big turkey producers are located near to processing plants and the cheap foods that will feed their livestock (Which explains the dots few and far between in regions like Utah and Texas).<br><br>There is also a large and vibrant industry of small scale production, as the smattering of dots on the map indicate. In fact, it’s not unusual to have turkey farms with a relatively small number of hogs and small-scale beef production too.",
+        "description" : "Turkey farmers want to be where the corn and soybeans are. Geographically, then, big turkey producers are located near to processing plants and the cheap foods that will feed their livestock (Which explains the dots few and far between in regions like Utah and Texas).<br><br>There is also a large and vibrant industry of small scale production, as the smattering of dots on the map indicate. In fact, it’s not unusual to have turkey farms with a relatively small number of hogs and small-scale beef production too.",
         "legend" : "images/legends/turkey.jpg"
     },
     "sweetPotatoes" : {
         "layerName" : "potatoes",
         "linkText" : "Sweet Potatoes",
-        "description" : "Like cranberries, sweet potatoes are picky and require specific conditions to yield the best crops. They need a long growing season, heat in the summer and a ton of water. For this reason sweet potatoes have the best yield in the south. They were first grown in South America, though they are often confused with the white starchy yam originating from West Africa and Asia—especially during the holidays.",
+        "description" : "Like cranberries, sweet potatoes are picky and require specific conditions to yield the best crops. They need a long growing season, heat in the summer and a ton of water, so their best yield is in the South. They are often confused with the white starchy yam originating from West Africa and Asia—especially during the holidays.",
         "legend" : "images/legends/sweetPotatoes.jpg"
     },
     "cranberries" : {
@@ -40,6 +40,10 @@ var changeFood = function(food){
     $("#foodTitleText").html(foods[food].linkText);
     startFade(getLayerByName(map,food));
     $("#legendImg").attr("src",foods[food].legend);
+    if(_embed === true){
+        $("#description").slideDown();
+        $("#descriptionToggle").html('HIDE');
+    }
 };
 
 var getLayerByName = function(mapVariable,layerName,searchMainLayers,searchGraphicsLayers){

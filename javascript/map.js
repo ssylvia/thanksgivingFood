@@ -60,13 +60,18 @@
           {"level" : 5, "resolution" : 305.748113140558, "scale" : 1155581.108577}
         ];
 
+        var popup = new esri.dijit.Popup({
+            highlight:false
+        }, dojo.create("div"));
+
 	   var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap, "map", {
          mapOptions: {
            slider: true,
            sliderStyle:"small",
            nav: false,
            wrapAround180:true,
-           lods:lods
+           lods:lods,
+           infoWindow:popup
          },
          ignorePopups:false,
          bingMapsKey: configOptions.bingmapskey
@@ -105,13 +110,16 @@
 
 
      function initUI(layers) {
-       //add chrome theme for popup
-       dojo.addClass(map.infoWindow.domNode, "chrome");
-       //add the scalebar
-       var scalebar = new esri.dijit.Scalebar({
-         map: map,
-         scalebarUnit:"english" //metric or english
-       });
+
+       if (_embed === false){
+           //add chrome theme for popup
+           dojo.addClass(map.infoWindow.domNode, "chrome");
+           //add the scalebar
+           var scalebar = new esri.dijit.Scalebar({
+             map: map,
+             scalebarUnit:"english" //metric or english
+           });
+       }
         /*
        var layerInfo = buildLayersList(layers);
 
@@ -215,5 +223,17 @@ function buildLayersList(layers) {
 		  $("#legTogText").html('MAP LEGEND ▼');
 		}
 		$("#legendDiv").slideToggle();
+	  });
+
+      $("#descriptionToggle").click(function(){
+        if(_embed === true){
+          if ($("#description").css('display')=='none'){
+    	    $("#descriptionToggle").html('HIDE');
+    	  }
+    	  else{
+    	    $("#descriptionToggle").html('SHOW');
+    	  }
+    	  $("#description").slideToggle();
+        }
 	  });
     });

@@ -7,7 +7,7 @@
     <title>Where Did Your Thanksgiving Dinner Come From?</title>
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/tundra.css">
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/css/esri.css" />
-    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/embed.css">
     <link rel="stylesheet" type="text/css" href="css/popup.css">
 
      <script type="text/javascript">
@@ -18,7 +18,7 @@
 		  ]
 		};
 
-        var _embed = false;
+        var _embed = true;
     </script>
     <script type="text/javascript" src="https://servicesbeta.esri.com/jsapi/arcgis/?v=3.2"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
@@ -69,6 +69,10 @@
       .esriSimpleSliderVertical .esriSimpleSliderIncrementButton {
         border-bottom: 1px dashed #dadada;
       }
+
+      .esriScaleBar{
+        display:none;
+      }
 	</style>
 
     <!--Social Media Links-->
@@ -99,6 +103,14 @@
 
           <!-- Header Section-->
           <div id="header" dojotype="dijit.layout.ContentPane" region="top">
+            <table id="embedSelector">
+                <tr>
+                    <td id="turkeySelect" class="foodSelect" onclick="changeFood('turkey')">TURKEY</td>
+                    <td id="cranberriesSelect" class="foodSelect" onclick="changeFood('cranberries')">CRANBERRIES</td>
+                    <td id="greenbeansSelect" class="foodSelect" onclick="changeFood('greenbeans')">GREEN BEANS</td>
+                    <td id="sweetPotatoesSelect" class="foodSelect" onclick="changeFood('sweetPotatoes')">SWEET POTATOES</td>
+                <tr>
+            </table>
           	<div id="headerText">
               <div id="title"></div>
               <div id="subtitle"></div>
@@ -116,18 +128,23 @@
               <div id="leftPane" dojotype="dijit.layout.BorderContainer" gutters="false" region="left">
                 <div id="foodSelectorPane" dojotype="dijit.layout.ContentPane" region="top">
                     <img id="foodPlate" src="images/TDinner.png" alt="Thanksgiving Dinner" usemap="#foodImgMap">
-                    <div id="foodTitle"><span id="foodTitleText">Turkey</span></div>
+                    <div id="foodTitle1"><span id="foodTitleText1">Turkey</span></div>
                 </div><!--foodSelectorPane-->
-                <div id="description" dojotype="dijit.layout.ContentPane" region="center">
-                </div><!--description-->
+                <div id="descriptionHidden" dojotype="dijit.layout.ContentPane" region="center">
+                </div><!--descriptionCon-->
               </div><!--leftPane-->
 
               <!-- Map Section -->
               <div id="map" dojotype="dijit.layout.ContentPane" region="center">
                 <div id="legendCon">
                       <div id="legendToggle"><p id="legTogText">MAP LEGEND ▼</p></div>
-                 	<div id="legendDiv"><img id="legendImg" alt="" src="images/legends/turkey.jpg"></div>
+                 	  <div id="legendDiv"><img id="legendImg" alt="" src="images/legends/turkey.jpg"></div>
                 </div>
+                <div id="descriptionCon">
+                    <span id="descriptionToggle">HIDE</span>
+                    <div id="foodTitle"><span id="foodTitleText">Turkey</span></div>
+                    <div id="description"></div>
+                </div><!--descriptionCon-->
               </div><!--map-->
 
           </div><!--content-->

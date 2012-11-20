@@ -34,13 +34,43 @@
       }
 
       #header {
-      height:115px;
+      height:32px;
       background:#444;
       color:#fff;
       margin:0;
       }
 
+      #embedSelector{
+      width:100%;
+      font-family:Arial, Helvetica, sans-serif;
+      border-collapse:collapse;
+      }
+
+      .foodSelect{
+      text-align:center;
+      font-weight:bold;
+      font-size:15px;
+      cursor:pointer;
+      padding:7px 0 7px 0;
+      }
+
+      #cranberriesSelect{
+      background:#c18384;
+      color:#5d2322;
+      }
+
+      #greenbeansSelect{
+      background:#85ae84;
+      color:#264d2e;
+      }
+
+      #sweetPotatoesSelect{
+      background:#fcd497;
+      color:#615339;
+      }
+
 	  #headerText{
+      display:none;
 	  padding-top:20px;
       padding-left:25px;
 	  width:70%;
@@ -66,6 +96,7 @@
       }
 
       #logoArea{
+      display:none;
 	  float:right;
       width:125px;
 	  padding-top:25px;
@@ -105,6 +136,7 @@
 	  }
 
       #leftPane {
+      display:none;
       width:280px;
       height:100%;
       font-size:1.1em;
@@ -121,22 +153,39 @@
       }
 
       #foodTitle{
-      position:absolute;
-      bottom:10px;
-      left:0;
-      width:230px;
-      padding-bottom:5px;
-      margin:0 25px 0 25px;
+      margin:10px;
       border-bottom:1px dashed #444;
       font-size:24px;
       font-family:Arial, Helvetica, sans-serif;
       font-weight:bold;
       }
 
+      #descriptionCon{
+      position:absolute;
+      background:#fff;
+      width:250px;
+      bottom:0;
+      left:0;
+      z-index:100;
+      border-top:2px solid #848484;
+      border-right:2px solid #848484;
+      }
+
       #description{
-      padding:0 25px 25px 25px;
+      padding:0 10px 15px 10px;
       color:#666;
+      max-height:200px;
       overflow:auto;
+      }
+
+      #descriptionToggle{
+      background:#848484;
+      float:right;
+      color:#fff;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:10px;
+      padding:3px;
+      cursor:pointer;
       }
 
       #map {
@@ -182,7 +231,7 @@
       #legendCon{
 	  position:absolute;
  	  width:255px !important;
-      right:20px;
+      right:0;
       border:2px solid #848484;
   	  z-index:100;
 	  }
