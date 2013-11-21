@@ -27,7 +27,7 @@ var foods = {
 
 var initApp = function(){
     $("#description").html(foods.turkey.description);
-    dojo.forEach(getLayerByName(map,"thanksgiving",true,false),function(lyr){
+    dojo.forEach(getLayerByName(map,"thanksgiving",true,true),function(lyr){
         lyr.setOpacity(0);
         lyr.hide();
     });
@@ -68,7 +68,8 @@ var getLayerByName = function(mapVariable,layerName,searchMainLayers,searchGraph
 };
 
 var startFade = function(layers){
-    dojo.forEach(getLayerByName(map,"thanksgiving",true,false),function(lyr){
+    dojo.forEach(getLayerByName(map,"thanksgiving",true,true),function(lyr){
+        console.log(lyr.id);
         lyr.fading = false;
         if ($.inArray(lyr,layers) !== -1) {
             setTimeout(function() {
