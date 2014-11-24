@@ -49,7 +49,7 @@
          configOptions.bingmapskey = urlObject.query.bingMapsKey;
        }
 
-	   esri.arcgis.utils.arcgisUrl = "http://arcgis.com/sharing/content/items";
+	   //esri.arcgis.utils.arcgisUrl = "http://arcgis.com/sharing/content/items";
 
        var lods = [
           {"level" : 0, "resolution" : 9783.93962049996, "scale" : 36978595.474472},
